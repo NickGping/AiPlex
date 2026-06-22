@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI工具箱 — 发现最好的AI工具</title>
+<meta name="description" content="AI工具导航站 · 收录AI视频、图像、直播、编程、写作等领域的优质工具 · 每日更新">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧰</text></svg>">
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --accent: #3fb950;
+    --accent-blue: #58a6ff;
+    --accent-orange: #d2991d;
+    --accent-red: #f85149;
+    --radius: 8px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Nav */
+  nav {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  nav .logo {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  nav .logo span { color: var(--accent); }
+  nav .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 14px;
+  }
+  nav .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  nav .nav-links a:hover { color: var(--text); }
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity .15s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    background: linear-gradient(180deg, #161b2200 0%, #161b2280 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero .subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .hero .stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .hero .stats strong {
+    display: block;
+    font-size: 28px;
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  /* Search */
+  .search-bar {
+    max-width: 600px;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 14px 20px 14px 44px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-bar input:focus { border-color: var(--accent-blue); }
+  .search-bar input::placeholder { color: #484f58; }
+  .search-bar .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+    font-size: 18px;
+  }
+
+  /* Categories */
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 0 24px;
+    justify-content: center;
+  }
+  .cat-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .cat-btn:hover { border-color: var(--text-dim); color: var(--text); }
+  .cat-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: #fff;
+  }
+
+  /* Tool Grid */
+  .tools-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .tool-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color .15s, transform .15s;
+  }
+  .tool-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+  }
+  .tool-card.featured {
+    border-color: var(--accent-orange);
+    position: relative;
+  }
+  .tool-card.featured::before {
+    content: '精选';
+    position: absolute;
+    top: -1px;
+    right: 16px;
+    background: var(--accent-orange);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 0 0 4px 4px;
+  }
+  .tool-card .tool-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .tool-card .tool-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    background: #21262d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .tool-card .tool-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-blue);
+  }
+  .tool-card .tool-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .tool-card .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .tool-card .tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    background: #1c2128;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .tool-card .tag.free { border-color: var(--accent); color: var(--accent); }
+  .tool-card .tag.paid { border-color: var(--accent-orange); color: var(--accent-orange); }
+  .tool-card .tool-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .tool-card .btn-visit {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    border-radius: var(--radius);
+    background: #21262d;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    transition: background .15s;
+  }
+  .tool-card .btn-visit:hover { background: #30363d; }
+
+  /* Sponsor Banner */
+  .sponsor-section {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 24px;
+  }
+  .sponsor-banner {
+    background: linear-gradient(135deg, #1c2128 0%, #21262d 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .sponsor-banner .sponsor-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .sponsor-banner .sponsor-info {
+    flex: 1;
+  }
+  .sponsor-banner h3 { font-size: 18px; margin-bottom: 4px; }
+  .sponsor-banner p { font-size: 14px; color: var(--text-dim); }
+  .sponsor-banner .sponsor-cta {
+    background: var(--accent-orange);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  /* CTA Footer */
+  .cta-footer {
+    text-align: center;
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  .cta-footer h2 { font-size: 28px; margin-bottom: 12px; }
+  .cta-footer p { color: var(--text-dim); margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-footer .cta-cards {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .cta-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    text-align: left;
+    flex: 1;
+    min-width: 200px;
+    max-width: 320px;
+  }
+  .cta-card .price {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 8px 0;
+  }
+  .cta-card .price small { font-size: 14px; font-weight: 400; color: var(--text-dim); }
+  .cta-card ul {
+    list-style: none;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin: 12px 0;
+  }
+  .cta-card ul li { padding: 3px 0; }
+  .cta-card ul li::before { content: '✓ '; color: var(--accent); }
+  .cta-card.featured-plan {
+    border-color: var(--accent-orange);
+    position: relative;
+  }
+  .cta-card.featured-plan::after {
+    content: '推荐';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-orange);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 12px;
+    border-radius: 10px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    color: #484f58;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--text-dim); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .tool-card { animation: fadeUp 0.4s ease backwards; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 40px 16px 32px; }
+    .hero .stats { gap: 20px; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .sponsor-banner { text-align: center; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🧰 <span>AI</span>工具箱</div>
+  <div class="nav-links">
+    <a href="#tools">工具库</a>
+    <a href="#submit">收录</a>
+    <a href="#pricing">推广</a>
+    <a href="https://github.com" target="_blank" style="color:var(--text-dim)">GitHub</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>发现最好的<span>AI工具</span></h1>
+  <p class="subtitle">从视频生成到直播工具，从编程助手到内容创作——精选AI工具一站导航</p>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="搜索 AI 工具..." oninput="filterTools()">
+  </div>
+  <div class="stats">
+    <div><strong id="toolCount">24</strong>收录工具</div>
+    <div><strong>7</strong>个分类</div>
+    <div><strong>每日</strong>更新</div>
+  </div>
+</section>
+
+<div class="categories" id="categories">
+  <button class="cat-btn active" onclick="filterCategory('all', this)">全部</button>
+  <button class="cat-btn" onclick="filterCategory('视频生成', this)">🎬 视频生成</button>
+  <button class="cat-btn" onclick="filterCategory('图像生成', this)">🖼️ 图像生成</button>
+  <button class="cat-btn" onclick="filterCategory('直播工具', this)">📡 直播工具</button>
+  <button class="cat-btn" onclick="filterCategory('编程助手', this)">💻 编程助手</button>
+  <button class="cat-btn" onclick="filterCategory('语音对话', this)">🎙️ 语音对话</button>
+  <button class="cat-btn" onclick="filterCategory('写作内容', this)">✍️ 写作内容</button>
+  <button class="cat-btn" onclick="filterCategory('效率工具', this)">⚡ 效率工具</button>
+</div>
+
+<div class="sponsor-section">
+  <div class="sponsor-banner">
+    <div>
+      <div class="sponsor-label">📌 精选推荐</div>
+      <div class="sponsor-info">
+        <h3>想让你的AI工具被更多人看到？</h3>
+        <p>入驻AI工具箱 · 首页精选曝光 · 直接触达精准AI用户</p>
+      </div>
+    </div>
+    <a href="#pricing" class="sponsor-cta">立即入驻 →</a>
+  </div>
+</div>
+
+<div class="tools-container" id="tools">
+  <div class="tools-grid" id="toolsGrid"></div>
+</div>
+
+<section class="cta-footer" id="pricing">
+  <h2>工具推广方案</h2>
+  <p>把你的AI工具放到对的人面前</p>
+  <div class="cta-cards">
+    <div class="cta-card">
+      <h3>基础收录</h3>
+      <div class="price">免费</div>
+      <ul>
+        <li>标准卡片展示</li>
+        <li>出现在工具列表</li>
+        <li>搜索可见</li>
+        <li>永久链接</li>
+      </ul>
+      <a href="mailto:nick@aitoolbox.cn" class="btn-visit" style="display:block;text-align:center;text-decoration:none;">免费提交</a>
+    </div>
+    <div class="cta-card featured-plan">
+      <h3>精选推广</h3>
+      <div class="price">¥199<small>/月</small></div>
+      <ul>
+        <li>首页精选标注</li>
+        <li>置顶优先展示</li>
+        <li>分类页顶部位置</li>
+        <li>月度流量报告</li>
+        <li>社交媒体推送1次</li>
+      </ul>
+      <a href="mailto:nick@aitoolbox.cn" class="btn-visit" style="display:block;text-align:center;text-decoration:none;background:var(--accent-orange);color:#000;font-weight:600;">立即入驻</a>
+    </div>
+    <div class="cta-card">
+      <h3>品牌合作</h3>
+      <div class="price">¥599<small>/月</small></div>
+      <ul>
+        <li>顶部横幅广告位</li>
+        <li>独立品牌页面</li>
+        <li>深度评测文章</li>
+        <li>全站侧边栏展示</li>
+        <li>周度数据分析</li>
+        <li>专属客服对接</li>
+      </ul>
+      <a href="mailto:nick@aitoolbox.cn" class="btn-visit" style="display:block;text-align:center;text-decoration:none;">联系合作</a>
+    </div>
+  </div>
+</section>
+
+<footer id="submit">
+  <p>📧 工具收录 / 推广合作：nick@aitoolbox.cn</p>
+  <p style="margin-top:8px;">Built with ❤️ on <a href="https://github.com">GitHub</a> · © 2026 AI工具箱</p>
+</footer>
+
+<script>
+const tools = [
+  // 视频生成
+  { name: 'ComfyUI', icon: '🎨', desc: '最强开源AI图像/视频工作流引擎，节点式操作，Wan2.1视频生成，Flux/SD3图像生成', category: '视频生成', tags: ['开源','免费','本地部署'], link: 'https://github.com/comfyanonymous/ComfyUI', featured: true },
+  { name: 'Runway Gen-4', icon: '🎥', desc: '专业级AI视频生成，文生视频、图生视频、视频编辑一站式，电影级画质', category: '视频生成', tags: ['付费','云端','电影级'], link: 'https://runwayml.com' },
+  { name: 'Pika Labs', icon: '✨', desc: '傻瓜式AI视频生成，输入文字秒出视频，支持唇形同步和视频延长', category: '视频生成', tags: ['免费额度','云端','易上手'], link: 'https://pika.art' },
+  { name: 'HeyGen', icon: '🎭', desc: 'AI数字人视频生成，照片级口型同步，多语言翻译克隆，直播/营销神器', category: '视频生成', tags: ['付费','数字人','多语言'], link: 'https://heygen.com' },
+
+  // 图像生成
+  { name: 'Midjourney', icon: '🖌️', desc: 'AI图像生成标杆，艺术感最强，V7版本画质飞跃，Discord内使用', category: '图像生成', tags: ['付费','云端','艺术风'], link: 'https://midjourney.com' },
+  { name: 'Stable Diffusion', icon: '🌟', desc: '开源AI图像生成之王，SD3.5/Flux模型，本地运行无审查，社区生态最丰富', category: '图像生成', tags: ['开源','免费','本地'], link: 'https://stability.ai' },
+  { name: 'DALL·E 3', icon: '🎯', desc: 'OpenAI出品的AI绘图，文字理解最强，适合设计稿和产品图', category: '图像生成', tags: ['付费','云端','文字理解强'], link: 'https://openai.com/dall-e-3' },
+  { name: 'Leonardo.ai', icon: '🎪', desc: '游戏资产和营销素材AI生成利器，内置海量风格模型，批量出图效率高', category: '图像生成', tags: ['免费额度','云端','批量'], link: 'https://leonardo.ai' },
+
+  // 直播工具
+  { name: 'OBS Studio', icon: '📡', desc: '开源直播推流之王，插件生态强大，支持虚拟摄像头、绿幕抠像、多场景切换', category: '直播工具', tags: ['开源','免费','全能'], link: 'https://obsproject.com' },
+  { name: 'NVIDIA Broadcast', icon: '🎛️', desc: 'AI降噪+虚拟背景+自动追踪，GPU加速实时处理，直播画质提升神器', category: '直播工具', tags: ['免费','RTX专属','AI降噪'], link: 'https://nvidia.com/broadcast', featured: true },
+  { name: 'Restream', icon: '🌐', desc: '一键多平台同时直播，YouTube+Twitch+抖音+B站，统一聊天室管理', category: '直播工具', tags: ['免费额度','多平台','云端'], link: 'https://restream.io' },
+  { name: 'Streamlabs', icon: '🎮', desc: '直播工具全家桶，OBS魔改版+弹幕+打赏+数据分析，主播一站式工作台', category: '直播工具', tags: ['免费','一站式','插件多'], link: 'https://streamlabs.com' },
+
+  // 编程助手
+  { name: 'GitHub Copilot', icon: '🤖', desc: 'GitHub官方AI编程助手，VS Code/JetBrains无缝集成，实时代码补全和生成', category: '编程助手', tags: ['付费','IDE集成','GitHub'], link: 'https://github.com/features/copilot' },
+  { name: 'Claude Code', icon: '🧠', desc: 'Anthropic的AI编程Agent，终端直接对话式编程，理解整个代码库上下文', category: '编程助手', tags: ['付费','终端','全栈'], link: 'https://claude.ai' },
+  { name: 'Cursor', icon: '⚡', desc: 'AI-first代码编辑器，VSCode fork + GPT-5深度集成，inline编辑和多文件重构', category: '编程助手', tags: ['免费额度','编辑器','智能'], link: 'https://cursor.sh' },
+  { name: 'Codex CLI', icon: '💻', desc: 'OpenAI开源的终端AI编程Agent，命令行直接干活，PTY模式跑真实终端', category: '编程助手', tags: ['开源','免费','终端'], link: 'https://github.com/openai/codex' },
+
+  // 语音对话
+  { name: 'ElevenLabs', icon: '🗣️', desc: 'AI语音合成天花板，超真实TTS，声音克隆只需30秒样本，多语言情感朗读', category: '语音对话', tags: ['免费额度','声音克隆','超真实'], link: 'https://elevenlabs.io' },
+  { name: 'Suno AI', icon: '🎵', desc: 'AI音乐生成器，输入歌词+风格直接出歌，支持中文，爆款BGM批量生产', category: '语音对话', tags: ['免费额度','音乐','中文'], link: 'https://suno.ai' },
+  { name: 'Whisper', icon: '👂', desc: 'OpenAI开源语音识别，多语言转录+翻译，精度碾压所有商业方案', category: '语音对话', tags: ['开源','免费','多语言'], link: 'https://github.com/openai/whisper' },
+  { name: 'Fish Audio', icon: '🎤', desc: '国产AI语音合成，中文效果第一梯队，声音克隆+情绪控制，直播配音神器', category: '语音对话', tags: ['免费额度','中文强','声音克隆'], link: 'https://fish.audio' },
+
+  // 写作内容
+  { name: 'ChatGPT', icon: '💬', desc: 'OpenAI旗舰，GPT-5多模态对话+写作+分析，联网搜索+DALL·E一体化', category: '写作内容', tags: ['免费额度','全能','多模态'], link: 'https://chat.openai.com' },
+  { name: 'Notion AI', icon: '📝', desc: 'Notion内置AI写作助手，笔记+文档+数据库+AI，知识管理+内容生产一体', category: '写作内容', tags: ['付费','笔记集成','协作'], link: 'https://notion.so' },
+  { name: 'Jasper', icon: '✍️', desc: '营销文案AI写作专家，品牌调性模板，博客/广告/社媒/邮件全场景覆盖', category: '写作内容', tags: ['付费','营销','模板多'], link: 'https://jasper.ai' },
+  { name: 'DeepSeek', icon: '🐋', desc: '国产大模型性价比之王，写作+编程+分析全精通，API价格击穿地板', category: '写作内容', tags: ['免费','中文强','超值API'], link: 'https://deepseek.com', featured: true },
+
+  // 效率工具
+  { name: 'perplexity', icon: '🔬', desc: 'AI搜索引擎，实时联网+深度研究，带引用来源的答案，调研效率提升10倍', category: '效率工具', tags: ['免费额度','联网','带引用'], link: 'https://perplexity.ai' },
+  { name: 'Make (Integromat)', icon: '🔗', desc: '无代码自动化平台，连接2000+应用，可视化编排工作流，AI自动触发执行', category: '效率工具', tags: ['免费额度','自动化','2000+集成'], link: 'https://make.com' },
+  { name: 'Gamma', icon: '📊', desc: 'AI一键生成PPT/文档/网页，输入主题秒出精美排版，演示汇报效率革命', category: '效率工具', tags: ['免费额度','PPT','秒出'], link: 'https://gamma.app' },
+];
+
+let activeCategory = 'all';
+
+function renderTools(filtered) {
+  const grid = document.getElementById('toolsGrid');
+  grid.innerHTML = filtered.map((t, i) => `
+    <div class="tool-card ${t.featured ? 'featured' : ''}" style="animation-delay:${i*0.04}s">
+      <div class="tool-header">
+        <div class="tool-icon">${t.icon}</div>
+        <div>
+          <div class="tool-name">${t.name}</div>
+        </div>
+      </div>
+      <div class="tool-desc">${t.desc}</div>
+      <div class="tool-tags">
+        ${t.tags.map(tag => {
+          let cls = 'tag';
+          if (tag.includes('免费')) cls += ' free';
+          if (tag.includes('付费')) cls += ' paid';
+          return `<span class="${cls}">${tag}</span>`;
+        }).join('')}
+      </div>
+      <div class="tool-actions">
+        <a href="${t.link}" target="_blank" class="btn-visit">访问官网 →</a>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('toolCount').textContent = filtered.length;
+}
+
+function filterCategory(cat, btn) {
+  activeCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterTools();
+}
+
+function filterTools() {
+  const query = document.getElementById('search').value.toLowerCase();
+  let filtered = tools;
+  if (activeCategory !== 'all') {
+    filtered = filtered.filter(t => t.category === activeCategory);
+  }
+  if (query) {
+    filtered = filtered.filter(t =>
+      t.name.toLowerCase().includes(query) ||
+      t.desc.toLowerCase().includes(query) ||
+      t.tags.some(tag => tag.toLowerCase().includes(query)) ||
+      t.category.toLowerCase().includes(query)
+    );
+  }
+  renderTools(filtered);
+}
+
+// 初始渲染
+renderTools(tools);
+</script>
+</body>
+</html>
