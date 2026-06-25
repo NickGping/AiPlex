@@ -524,6 +524,17 @@
   </div>
 </section>
 
+<!-- 联系咨询 -->
+<section class="tools-container" id="contact" style="padding-top:40px;">
+  <h2 style="text-align:center;margin-bottom:8px;">💬 咨询购买</h2>
+  <p style="text-align:center;color:var(--text-dim);margin-bottom:24px;">扫码添加微信，了解详情 & 下单</p>
+  <div style="text-align:center;">
+    <div style="width:200px;height:200px;background:#21262d;border:1px dashed var(--border);border-radius:8px;margin:0 auto 12px;display:inline-flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:13px;">微信二维码<br>（待上传）</div>
+    <p style="color:var(--text-dim);font-size:13px;">📱 微信号：待填写</p>
+    <p style="color:var(--text-dim);font-size:12px;margin-top:8px;">添加请备注：AiPlex</p>
+  </div>
+</section>
+
 <footer id="submit">
   <p>📧 工具收录 / 推广合作：nick@aitoolbox.cn</p>
   <p style="margin-top:8px;">Built with ❤️ on <a href="https://github.com">GitHub</a> · © 2026 AiPlex</p>
@@ -608,6 +619,8 @@ function renderTools(filtered) {
       actionBtn = t.link
         ? `<a href="${t.link}" target="_blank" class="btn-visit">💾 下载 / 了解 →</a>`
         : `<span class="btn-visit" style="cursor:default;opacity:0.8;">📩 联系获取</span>`;
+    } else if (lt === 'consult') {
+      actionBtn = `<a href="#contact" class="btn-visit" style="background:var(--accent);color:#000;font-weight:600;">💬 咨询购买 →</a>`;
     } else {
       actionBtn = t.link
         ? `<a href="${t.link}" target="_blank" class="btn-visit">访问官网 →</a>`
