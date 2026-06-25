@@ -598,7 +598,22 @@ let activeCategory = 'all';
 
 function renderTools(filtered) {
   const grid = document.getElementById('toolsGrid');
-  grid.innerHTML = filtered.map((t, i) => `
+  grid.innerHTML = filtered.map((t, i) => {
+    // 根据 linkType 生成不同的按钮
+    let actionBtn = '';
+    const lt = t.linkType || 'url';
+    if (lt === 'miniapp') {
+      actionBtn = `<span class="btn-visit" style="cursor:default;opacity:0.8;">📱 微信搜索：${t.miniapp || t.name}</span>`;
+    } else if (lt === 'download') {
+      actionBtn = t.link
+        ? `<a href="${t.link}" target="_blank" class="btn-visit">💾 下载 / 了解 →</a>`
+        : `<span class="btn-visit" style="cursor:default;opacity:0.8;">📩 联系获取</span>`;
+    } else {
+      actionBtn = t.link
+        ? `<a href="${t.link}" target="_blank" class="btn-visit">访问官网 →</a>`
+        : `<span class="btn-visit" style="cursor:default;opacity:0.8;">详情待更新</span>`;
+    }
+    return `
     <div class="tool-card ${t.featured ? 'featured' : ''}" style="animation-delay:${i*0.04}s">
       <div class="tool-header">
         <div class="tool-icon">${t.icon}</div>
@@ -616,10 +631,10 @@ function renderTools(filtered) {
         }).join('')}
       </div>
       <div class="tool-actions">
-        <a href="${t.link}" target="_blank" class="btn-visit">访问官网 →</a>
+        ${actionBtn}
       </div>
     </div>
-  `).join('');
+  `}).join('');
   document.getElementById('toolCount').textContent = filtered.length;
 }
 
