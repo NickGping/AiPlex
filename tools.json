@@ -1,0 +1,501 @@
+{
+  "version": "2.0",
+  "updated": "2026-06-25",
+  "total": 38,
+  "tools": [
+    {
+      "name": "ComfyUI",
+      "icon": "🎨",
+      "desc": "最强开源AI图像/视频工作流引擎，节点式操作，Wan2.1视频生成，Flux/SD3图像生成",
+      "category": "视频生成",
+      "link": "https://github.com/comfyanonymous/ComfyUI",
+      "tags": [
+        "开源",
+        "免费",
+        "本地部署"
+      ],
+      "featured": true
+    },
+    {
+      "name": "Runway Gen-4",
+      "icon": "🎥",
+      "desc": "专业级AI视频生成，文生视频、图生视频、视频编辑一站式，电影级画质",
+      "category": "视频生成",
+      "link": "https://runwayml.com",
+      "tags": [
+        "付费",
+        "云端",
+        "电影级"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Pika Labs",
+      "icon": "✨",
+      "desc": "傻瓜式AI视频生成，输入文字秒出视频，支持唇形同步和视频延长",
+      "category": "视频生成",
+      "link": "https://pika.art",
+      "tags": [
+        "免费额度",
+        "云端",
+        "易上手"
+      ],
+      "featured": false
+    },
+    {
+      "name": "HeyGen",
+      "icon": "🎭",
+      "desc": "AI数字人视频生成，照片级口型同步，多语言翻译克隆，直播/营销神器",
+      "category": "视频生成",
+      "link": "https://heygen.com",
+      "tags": [
+        "付费",
+        "数字人",
+        "多语言"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Midjourney",
+      "icon": "🖌️",
+      "desc": "AI图像生成标杆，艺术感最强，V7版本画质飞跃，Discord内使用",
+      "category": "图像生成",
+      "link": "https://midjourney.com",
+      "tags": [
+        "付费",
+        "云端",
+        "艺术风"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Stable Diffusion",
+      "icon": "🌟",
+      "desc": "开源AI图像生成之王，SD3.5/Flux模型，本地运行无审查，社区生态最丰富",
+      "category": "图像生成",
+      "link": "https://stability.ai",
+      "tags": [
+        "开源",
+        "免费",
+        "本地"
+      ],
+      "featured": false
+    },
+    {
+      "name": "DALL·E 3",
+      "icon": "🎯",
+      "desc": "OpenAI出品的AI绘图，文字理解最强，适合设计稿和产品图",
+      "category": "图像生成",
+      "link": "https://openai.com/dall-e-3",
+      "tags": [
+        "付费",
+        "云端",
+        "文字理解强"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Leonardo.ai",
+      "icon": "🎪",
+      "desc": "游戏资产和营销素材AI生成利器，内置海量风格模型，批量出图效率高",
+      "category": "图像生成",
+      "link": "https://leonardo.ai",
+      "tags": [
+        "免费额度",
+        "云端",
+        "批量"
+      ],
+      "featured": false
+    },
+    {
+      "name": "OBS Studio",
+      "icon": "📡",
+      "desc": "开源直播推流之王，插件生态强大，支持虚拟摄像头、绿幕抠像、多场景切换",
+      "category": "直播工具",
+      "link": "https://obsproject.com",
+      "tags": [
+        "开源",
+        "免费",
+        "全能"
+      ],
+      "featured": false
+    },
+    {
+      "name": "NVIDIA Broadcast",
+      "icon": "🎛️",
+      "desc": "AI降噪+虚拟背景+自动追踪，GPU加速实时处理，直播画质提升神器",
+      "category": "直播工具",
+      "link": "https://nvidia.com/broadcast",
+      "tags": [
+        "免费",
+        "RTX专属",
+        "AI降噪"
+      ],
+      "featured": true
+    },
+    {
+      "name": "Restream",
+      "icon": "🌐",
+      "desc": "一键多平台同时直播，YouTube+Twitch+抖音+B站，统一聊天室管理",
+      "category": "直播工具",
+      "link": "https://restream.io",
+      "tags": [
+        "免费额度",
+        "多平台",
+        "云端"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Streamlabs",
+      "icon": "🎮",
+      "desc": "直播工具全家桶，OBS魔改版+弹幕+打赏+数据分析，主播一站式工作台",
+      "category": "直播工具",
+      "link": "https://streamlabs.com",
+      "tags": [
+        "免费",
+        "一站式",
+        "插件多"
+      ],
+      "featured": false
+    },
+    {
+      "name": "GitHub Copilot",
+      "icon": "🤖",
+      "desc": "GitHub官方AI编程助手，VS Code/JetBrains无缝集成，实时代码补全和生成",
+      "category": "编程助手",
+      "link": "https://github.com/features/copilot",
+      "tags": [
+        "付费",
+        "IDE集成",
+        "GitHub"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Claude Code",
+      "icon": "🧠",
+      "desc": "Anthropic的AI编程Agent，终端直接对话式编程，理解整个代码库上下文",
+      "category": "编程助手",
+      "link": "https://claude.ai",
+      "tags": [
+        "付费",
+        "终端",
+        "全栈"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Cursor",
+      "icon": "⚡",
+      "desc": "AI-first代码编辑器，VSCode fork + GPT-5深度集成，inline编辑和多文件重构",
+      "category": "编程助手",
+      "link": "https://cursor.sh",
+      "tags": [
+        "免费额度",
+        "编辑器",
+        "智能"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Codex CLI",
+      "icon": "💻",
+      "desc": "OpenAI开源的终端AI编程Agent，命令行直接干活，PTY模式跑真实终端",
+      "category": "编程助手",
+      "link": "https://github.com/openai/codex",
+      "tags": [
+        "开源",
+        "免费",
+        "终端"
+      ],
+      "featured": false
+    },
+    {
+      "name": "ElevenLabs",
+      "icon": "🗣️",
+      "desc": "AI语音合成天花板，超真实TTS，声音克隆只需30秒样本，多语言情感朗读",
+      "category": "语音对话",
+      "link": "https://elevenlabs.io",
+      "tags": [
+        "免费额度",
+        "声音克隆",
+        "超真实"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Suno AI",
+      "icon": "🎵",
+      "desc": "AI音乐生成器，输入歌词+风格直接出歌，支持中文，爆款BGM批量生产",
+      "category": "语音对话",
+      "link": "https://suno.ai",
+      "tags": [
+        "免费额度",
+        "音乐",
+        "中文"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Whisper",
+      "icon": "👂",
+      "desc": "OpenAI开源语音识别，多语言转录+翻译，精度碾压所有商业方案",
+      "category": "语音对话",
+      "link": "https://github.com/openai/whisper",
+      "tags": [
+        "开源",
+        "免费",
+        "多语言"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Fish Audio",
+      "icon": "🎤",
+      "desc": "国产AI语音合成，中文效果第一梯队，声音克隆+情绪控制，直播配音神器",
+      "category": "语音对话",
+      "link": "https://fish.audio",
+      "tags": [
+        "免费额度",
+        "中文强",
+        "声音克隆"
+      ],
+      "featured": false
+    },
+    {
+      "name": "ChatGPT",
+      "icon": "💬",
+      "desc": "OpenAI旗舰，GPT-5多模态对话+写作+分析，联网搜索+DALL·E一体化",
+      "category": "写作内容",
+      "link": "https://chat.openai.com",
+      "tags": [
+        "免费额度",
+        "全能",
+        "多模态"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Notion AI",
+      "icon": "📝",
+      "desc": "Notion内置AI写作助手，笔记+文档+数据库+AI，知识管理+内容生产一体",
+      "category": "写作内容",
+      "link": "https://notion.so",
+      "tags": [
+        "付费",
+        "笔记集成",
+        "协作"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Jasper",
+      "icon": "✍️",
+      "desc": "营销文案AI写作专家，品牌调性模板，博客/广告/社媒/邮件全场景覆盖",
+      "category": "写作内容",
+      "link": "https://jasper.ai",
+      "tags": [
+        "付费",
+        "营销",
+        "模板多"
+      ],
+      "featured": false
+    },
+    {
+      "name": "DeepSeek",
+      "icon": "🐋",
+      "desc": "国产大模型性价比之王，写作+编程+分析全精通，API价格击穿地板",
+      "category": "写作内容",
+      "link": "https://deepseek.com",
+      "tags": [
+        "免费",
+        "中文强",
+        "超值API"
+      ],
+      "featured": true
+    },
+    {
+      "name": "perplexity",
+      "icon": "🔬",
+      "desc": "AI搜索引擎，实时联网+深度研究，带引用来源的答案，调研效率提升10倍",
+      "category": "效率工具",
+      "link": "https://perplexity.ai",
+      "tags": [
+        "免费额度",
+        "联网",
+        "带引用"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Make (Integromat)",
+      "icon": "🔗",
+      "desc": "无代码自动化平台，连接2000+应用，可视化编排工作流，AI自动触发执行",
+      "category": "效率工具",
+      "link": "https://make.com",
+      "tags": [
+        "免费额度",
+        "自动化",
+        "2000+集成"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Gamma",
+      "icon": "📊",
+      "desc": "AI一键生成PPT/文档/网页，输入主题秒出精美排版，演示汇报效率革命",
+      "category": "效率工具",
+      "link": "https://gamma.app",
+      "tags": [
+        "免费额度",
+        "PPT",
+        "秒出"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Sora",
+      "icon": "🎬",
+      "desc": "OpenAI文生视频模型，超长连贯视频生成，物理世界理解力强，影视级画质",
+      "category": "视频生成",
+      "link": "https://sora.com",
+      "tags": [
+        "付费",
+        "云端",
+        "影视级"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Kling (可灵)",
+      "icon": "🎞️",
+      "desc": "快手AI视频生成，国产文生视频天花板，图生视频效果惊艳，支持最长2分钟",
+      "category": "视频生成",
+      "link": "https://klingai.com",
+      "tags": [
+        "免费额度",
+        "云端",
+        "国产"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Veo 3",
+      "icon": "🎬",
+      "desc": "Google最强视频生成模型，4K超高清输出，精准动作控制和摄像机运镜",
+      "category": "视频生成",
+      "link": "https://deepmind.google/technologies/veo/",
+      "tags": [
+        "付费",
+        "云端",
+        "4K"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Adobe Firefly",
+      "icon": "🔥",
+      "desc": "Adobe官方AI图像生成，PS/AI无缝集成，商用安全，品牌素材生成首选",
+      "category": "图像生成",
+      "link": "https://firefly.adobe.com",
+      "tags": [
+        "免费额度",
+        "商用安全",
+        "Adobe"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Canva AI",
+      "icon": "🎨",
+      "desc": "Canva内置AI设计套件，一键生成海报/PPT/社媒图，小白也能出专业设计",
+      "category": "图像生成",
+      "link": "https://canva.com",
+      "tags": [
+        "免费额度",
+        "设计",
+        "易上手"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Windsurf",
+      "icon": "🌊",
+      "desc": "Codeium出品的AI-first IDE，Cascade流式Agent编程，上下文理解超越Copilot",
+      "category": "编程助手",
+      "link": "https://codeium.com/windsurf",
+      "tags": [
+        "免费额度",
+        "IDE",
+        "Agent"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Bolt.new",
+      "icon": "⚡",
+      "desc": "StackBlitz出品，浏览器内AI全栈应用生成，输入描述秒出可运行的全栈项目",
+      "category": "编程助手",
+      "link": "https://bolt.new",
+      "tags": [
+        "免费额度",
+        "浏览器",
+        "全栈"
+      ],
+      "featured": false
+    },
+    {
+      "name": "v0.dev",
+      "icon": "🅅",
+      "desc": "Vercel出品的AI UI生成器，自然语言描述直接生成React/Tailwind组件代码",
+      "category": "编程助手",
+      "link": "https://v0.dev",
+      "tags": [
+        "免费额度",
+        "前端",
+        "React"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Udio",
+      "icon": "🎶",
+      "desc": "AI音乐生成新秀，音质和音乐性超越同类，支持人声+伴奏分离生成",
+      "category": "语音对话",
+      "link": "https://udio.com",
+      "tags": [
+        "免费额度",
+        "音乐",
+        "高音质"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Claude",
+      "icon": "🧠",
+      "desc": "Anthropic旗舰AI助手，超长上下文200K，深度推理+写作+分析，Artifacts交互式输出",
+      "category": "写作内容",
+      "link": "https://claude.ai",
+      "tags": [
+        "免费额度",
+        "长上下文",
+        "深度推理"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Gemini",
+      "icon": "💎",
+      "desc": "Google多模态大模型，2M超长上下文，深度整合Google生态，联网搜索免费",
+      "category": "写作内容",
+      "link": "https://gemini.google.com",
+      "tags": [
+        "免费",
+        "2M上下文",
+        "Google"
+      ],
+      "featured": false
+    }
+  ]
+}

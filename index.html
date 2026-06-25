@@ -388,6 +388,15 @@
     .sponsor-banner { text-align: center; justify-content: center; }
   }
 </style>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 <body>
 
@@ -397,7 +406,7 @@
     <a href="#tools">工具库</a>
     <a href="#submit">收录</a>
     <a href="#pricing">推广</a>
-    <a href="https://github.com" target="_blank" style="color:var(--text-dim)">GitHub</a>
+    <a href="https://github.com/NickGping/aitoolbox" target="_blank" style="color:var(--text-dim)">GitHub</a>
   </div>
 </nav>
 
@@ -533,6 +542,27 @@ const tools = [
   { name: 'perplexity', icon: '🔬', desc: 'AI搜索引擎，实时联网+深度研究，带引用来源的答案，调研效率提升10倍', category: '效率工具', tags: ['免费额度','联网','带引用'], link: 'https://perplexity.ai' },
   { name: 'Make (Integromat)', icon: '🔗', desc: '无代码自动化平台，连接2000+应用，可视化编排工作流，AI自动触发执行', category: '效率工具', tags: ['免费额度','自动化','2000+集成'], link: 'https://make.com' },
   { name: 'Gamma', icon: '📊', desc: 'AI一键生成PPT/文档/网页，输入主题秒出精美排版，演示汇报效率革命', category: '效率工具', tags: ['免费额度','PPT','秒出'], link: 'https://gamma.app' },
+
+  // 视频生成 - 新增
+  { name: 'Sora', icon: '🎬', desc: 'OpenAI文生视频模型，超长连贯视频生成，物理世界理解力强，影视级画质', category: '视频生成', tags: ['付费','云端','影视级'], link: 'https://sora.com' },
+  { name: 'Kling (可灵)', icon: '🎞️', desc: '快手AI视频生成，国产文生视频天花板，图生视频效果惊艳，支持最长2分钟', category: '视频生成', tags: ['免费额度','云端','国产'], link: 'https://klingai.com' },
+  { name: 'Veo 3', icon: '🎬', desc: 'Google最强视频生成模型，4K超高清输出，精准动作控制和摄像机运镜', category: '视频生成', tags: ['付费','云端','4K'], link: 'https://deepmind.google/technologies/veo/' },
+
+  // 图像生成 - 新增
+  { name: 'Adobe Firefly', icon: '🔥', desc: 'Adobe官方AI图像生成，PS/AI无缝集成，商用安全，品牌素材生成首选', category: '图像生成', tags: ['免费额度','商用安全','Adobe'], link: 'https://firefly.adobe.com' },
+  { name: 'Canva AI', icon: '🎨', desc: 'Canva内置AI设计套件，一键生成海报/PPT/社媒图，小白也能出专业设计', category: '图像生成', tags: ['免费额度','设计','易上手'], link: 'https://canva.com' },
+
+  // 编程助手 - 新增
+  { name: 'Windsurf', icon: '🌊', desc: 'Codeium出品的AI-first IDE，Cascade流式Agent编程，上下文理解超越Copilot', category: '编程助手', tags: ['免费额度','IDE','Agent'], link: 'https://codeium.com/windsurf' },
+  { name: 'Bolt.new', icon: '⚡', desc: 'StackBlitz出品，浏览器内AI全栈应用生成，输入描述秒出可运行的全栈项目', category: '编程助手', tags: ['免费额度','浏览器','全栈'], link: 'https://bolt.new' },
+  { name: 'v0.dev', icon: '🅅', desc: 'Vercel出品的AI UI生成器，自然语言描述直接生成React/Tailwind组件代码', category: '编程助手', tags: ['免费额度','前端','React'], link: 'https://v0.dev' },
+
+  // 语音对话 - 新增
+  { name: 'Udio', icon: '🎶', desc: 'AI音乐生成新秀，音质和音乐性超越同类，支持人声+伴奏分离生成', category: '语音对话', tags: ['免费额度','音乐','高音质'], link: 'https://udio.com' },
+
+  // 写作内容 - 新增
+  { name: 'Claude', icon: '🧠', desc: 'Anthropic旗舰AI助手，超长上下文200K，深度推理+写作+分析，Artifacts交互式输出', category: '写作内容', tags: ['免费额度','长上下文','深度推理'], link: 'https://claude.ai' },
+  { name: 'Gemini', icon: '💎', desc: 'Google多模态大模型，2M超长上下文，深度整合Google生态，联网搜索免费', category: '写作内容', tags: ['免费','2M上下文','Google'], link: 'https://gemini.google.com' },
 ];
 
 let activeCategory = 'all';
